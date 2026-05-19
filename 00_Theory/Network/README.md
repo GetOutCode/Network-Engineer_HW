@@ -1,3 +1,7 @@
+# Network Theory
+
+이 폴더는 네트워크 이론을 계층별, 기능별로 정리하는 공간입니다.
+
 ## 정리 예정 목록
 
 ### 1. Network Fundamentals
@@ -35,17 +39,3 @@
 - Firewall 기본 개념
 - VPN
 - IDS / IPS 기본 개념
-
-### 5. Server / Linux
-- Linux 설치
-- IP 설정
-- SSH
-- 사용자 및 권한
-- 서비스 관리
-- 로그 확인
-
-### 6. Work Experience
-- 보안 솔루션 기술지원 경험 정리
-- Nexpose 점검 흐름 정리
-- AppScan 점검 경험 정리
-- 고객 문의 및 장애 대응 사례 정리
