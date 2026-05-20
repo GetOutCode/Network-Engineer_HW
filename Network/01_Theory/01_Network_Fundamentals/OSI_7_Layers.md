@@ -3,7 +3,7 @@
 ## 1. 개요
 
 OSI 7계층은 네트워크 통신 과정을 계층별로 나누어 이해하기 위한 모델이다.  
-실무에서는 단순 암기보다 장애 원인을 계층별로 분리해서 확인하는 기준으로 활용된다.
+장애 원인을 계층별로 분리해서 확인하는 기준으로 활용된다.
 
 예를 들어 통신이 되지 않을 때 물리 연결 문제인지, VLAN 문제인지, IP 설정 문제인지, 라우팅 문제인지, 방화벽 정책 문제인지 구분하기 위해 OSI 계층 관점으로 접근할 수 있다.
 
@@ -11,17 +11,20 @@ OSI 7계층은 네트워크 통신 과정을 계층별로 나누어 이해하기
 
 ## 2. OSI 7계층 구조
 
-| 계층 | 이름 | 주요 역할 | 대표 장비/프로토콜 |
-|---|---|---|---|
-| 7계층 | Application | 사용자에게 네트워크 서비스를 제공 | HTTP, HTTPS, DNS, FTP, SMTP, SSH |
-| 6계층 | Presentation | 데이터 표현, 인코딩, 암호화, 압축 | TLS, SSL, Encoding |
-| 5계층 | Session | 통신 세션 연결, 유지, 종료 | Session Control |
-| 4계층 | Transport | 포트 기반 통신, 신뢰성 제어 | TCP, UDP |
-| 3계층 | Network | IP 주소 기반 통신, 라우팅 | IP, ICMP, Router, L3 Switch |
-| 2계층 | Data Link | MAC 주소 기반 통신, 같은 네트워크 내 프레임 전달 | Ethernet, Switch, VLAN, STP |
-| 1계층 | Physical | 전기적 신호, 케이블, 물리 연결 | Cable, Hub, NIC |
-
+| 계층 | 이름 | 데이터 단위(PDU) | 주요 역할 | 대표 장비/프로토콜 |
+|---|---|---|---|---|
+| 7계층 | Application | Data / Message | 사용자에게 네트워크 서비스를 제공 | HTTP, HTTPS, DNS, FTP, SMTP, SSH |
+| 6계층 | Presentation | Data | 데이터 표현, 인코딩, 암호화, 압축 | TLS, SSL, Encoding |
+| 5계층 | Session | Data | 통신 세션 연결, 유지, 종료 | Session Control |
+| 4계층 | Transport | Segment / Datagram(UDP) | 포트 기반 통신, 신뢰성 제어 | TCP, UDP |
+| 3계층 | Network | Packet | IP 주소 기반 통신, 라우팅 | IP, ICMP, Router, L3 Switch |
+| 2계층 | Data Link | Frame | MAC 주소 기반 통신, 같은 네트워크 내 프레임 전달 | Ethernet, Switch, VLAN, STP |
+| 1계층 | Physical | Bit / Signal | 전기적 신호, 케이블, 물리 연결 | Cable, Hub, NIC |
 ---
+
+> OSI 7계층은 통신 과정을 세분화해서 이해하기 위한 모델이다.  
+> 다만 실무에서는 5계층(Session)과 6계층(Presentation)을 독립적으로 분리해서 점검하기보다는, 7계층(Application) 영역과 함께 보는 경우가 많다.  
+> 이후 TCP/IP 모델에서는 OSI 5~7계층이 Application 계층으로 묶여 표현된다.
 
 ## 3. 계층별 핵심 이해
 
@@ -111,7 +114,7 @@ show ip interface brief
 4계층은 TCP/UDP 포트를 기반으로 통신을 구분한다.  
 TCP는 연결성과 신뢰성을 제공하고, UDP는 빠른 전송에 초점을 둔다.
 
-예를 들어 웹 서비스는 보통 TCP 80 또는 TCP 443 포트를 사용하고, DNS는 UDP 53 또는 TCP 53을 사용할 수 있다.
+예, 웹 서비스는 보통 TCP 80 또는 TCP 443 포트를 사용하고, DNS는 UDP 53 또는 TCP 53을 사용할 수 있다.
 
 주요 확인 항목:
 
@@ -138,11 +141,15 @@ nc -vz [IP] [PORT]
 
 예를 들어 웹 로그인 세션, 원격 접속 세션, 애플리케이션 세션 유지 문제가 이 계층과 관련될 수 있다.
 
+5계층을 독립적인 장비나 명령어 기준으로 점검하는 경우는 많지 않다.  
+다만 로그인 세션, 원격 접속 세션, 애플리케이션 연결 유지 문제를 볼 때 Session 개념을 함께 고려할 수 있다.
+
 주요 확인 항목:
 
 - 세션 유지 여부
 - 로그인 세션 만료 여부
 - 연결이 중간에 끊기는지 여부
+
 
 ---
 
@@ -150,6 +157,7 @@ nc -vz [IP] [PORT]
 
 6계층은 데이터 표현 방식, 인코딩, 암호화, 압축과 관련된다.  
 대표적으로 TLS/SSL 암호화, 문자 인코딩, 인증서 문제가 이 계층과 관련될 수 있다.
+6계층을 별도로 분리하기보다는 HTTPS, TLS 인증서, 암호화 방식, 인코딩 문제처럼 애플리케이션 통신 과정 안에서 함께 확인하는 경우가 많다.
 
 예를 들어 HTTPS 접속 시 인증서 오류가 발생하거나, 브라우저에서 TLS 관련 오류가 발생하는 경우 6계층 관점에서 확인할 수 있다.
 
