@@ -15,7 +15,21 @@ Static Route:
 L4SW1 -> 192.168.20.0/24 via 10.0.12.2
 L4SW2 -> 192.168.10.0/24 via 10.0.12.1
 
-Ping Test:
+Verification Commands:
+VPC1:
+ping 192.168.10.1
+ping 10.0.12.2
+ping 192.168.20.10
+
+L4SW1:
+show ip interface brief
+show ip route
+
+L4SW2:
+show ip interface brief
+show ip route
+
+Ping Test Result:
 VPC1 -> 192.168.10.1      Success
 VPC1 -> 10.0.12.2         Success
 VPC1 -> 192.168.20.10     Success
