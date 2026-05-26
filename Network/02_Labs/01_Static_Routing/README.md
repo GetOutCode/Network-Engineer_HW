@@ -183,7 +183,7 @@ ip route 192.168.10.0 255.255.255.0 10.0.12.1
 
 ## 10. Connectivity Verification
 
-![Connectivity Test](./screenshots/08_connectivity_test.PNG)
+![Ping Verification](./screenshots/08_ping_verification.PNG)
 
 VPC1에서 가까운 구간부터 순서대로 ping을 수행했습니다.
 
