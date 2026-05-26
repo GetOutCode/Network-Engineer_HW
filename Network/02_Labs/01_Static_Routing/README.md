@@ -46,7 +46,7 @@ VPC1 --- L4SW1 --- L4SW2 --- VPC2
 
 ### VPC1
 
-![VPC1 IP](./screenshots/02_vpc1_ip.png)
+![VPC1 IP](./screenshots/02_vpc1_ip.PNG)
 
 ```text
 ip 192.168.10.10/24 192.168.10.1
@@ -56,7 +56,7 @@ save
 
 ### VPC2
 
-![VPC2 IP](./screenshots/03_vpc2_ip.png)
+![VPC2 IP](./screenshots/03_vpc2_ip.PNG)
 
 ```text
 ip 192.168.20.10/24 192.168.20.1
@@ -128,7 +128,7 @@ write memory
 
 ### L4SW1 Interface Status
 
-![L4SW1 Interface](./screenshots/04_l4sw1_interface.png)
+![L4SW1 Interface](./screenshots/04_l4sw1_interface.PNG)
 
 | Interface | IP Address | Role |
 |---|---|---|
@@ -137,7 +137,7 @@ write memory
 
 ### L4SW2 Interface Status
 
-![L4SW2 Interface](./screenshots/05_l4sw2_interface.png)
+![L4SW2 Interface](./screenshots/05_l4sw2_interface.PNG)
 
 | Interface | IP Address | Role |
 |---|---|---|
@@ -156,7 +156,7 @@ L4SW1은 VPC2 네트워크인 `192.168.20.0/24`로 가기 위해 Next-Hop을 L4S
 ip route 192.168.20.0 255.255.255.0 10.0.12.2
 ```
 
-![L4SW1 Route](./screenshots/06_l4sw1_route.png)
+![L4SW1 Route](./screenshots/06_l4sw1_route.PNG)
 
 ### L4SW2 Static Route
 
@@ -166,7 +166,7 @@ L4SW2는 VPC1 네트워크인 `192.168.10.0/24`로 가기 위해 Next-Hop을 L4S
 ip route 192.168.10.0 255.255.255.0 10.0.12.1
 ```
 
-![L4SW2 Route](./screenshots/07_l4sw2_route.png)
+![L4SW2 Route](./screenshots/07_l4sw2_route.PNG)
 
 ---
 
