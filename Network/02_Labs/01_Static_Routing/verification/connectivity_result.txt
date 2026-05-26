@@ -1,0 +1,24 @@
+[01_Static_Routing Verification Result]
+
+Topology:
+VPC1 --- L4SW1 --- L4SW2 --- VPC2
+
+IP Address Plan:
+VPC1    : 192.168.10.10/24, Gateway 192.168.10.1
+L4SW1   : Gi0/1 192.168.10.1/24
+L4SW1   : Gi0/0 10.0.12.1/30
+L4SW2   : Gi0/0 10.0.12.2/30
+L4SW2   : Gi0/1 192.168.20.1/24
+VPC2    : 192.168.20.10/24, Gateway 192.168.20.1
+
+Static Route:
+L4SW1 -> 192.168.20.0/24 via 10.0.12.2
+L4SW2 -> 192.168.10.0/24 via 10.0.12.1
+
+Ping Test:
+VPC1 -> 192.168.10.1      Success
+VPC1 -> 10.0.12.2         Success
+VPC1 -> 192.168.20.10     Success
+
+Result:
+Static Routing 기반 end-to-end 통신 성공
