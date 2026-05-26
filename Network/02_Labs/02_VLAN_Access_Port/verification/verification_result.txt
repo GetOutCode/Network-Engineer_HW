@@ -1,0 +1,47 @@
+[02_VLAN_Access_Port Verification Result]
+
+Topology:
+VPC1 --- Gi0/0
+VPC2 --- Gi0/1
+          L4SW1
+VPC3 --- Gi0/2
+VPC4 --- Gi0/3
+
+VLAN Plan:
+VLAN 10 ADMIN : VPC1, VPC2
+VLAN 20 USER  : VPC3, VPC4
+
+IP Address Plan:
+VPC1 : 192.168.10.10/24
+VPC2 : 192.168.10.20/24
+VPC3 : 192.168.20.10/24
+VPC4 : 192.168.20.20/24
+
+Access Port Mapping:
+Gi0/0 -> VLAN 10
+Gi0/1 -> VLAN 10
+Gi0/2 -> VLAN 20
+Gi0/3 -> VLAN 20
+
+Verification Commands:
+L4SW1:
+show vlan brief
+show mac address-table
+
+VPC1:
+ping 192.168.10.20
+ping 192.168.20.10
+
+VPC3:
+ping 192.168.20.20
+
+Same VLAN Test:
+VPC1 -> VPC2 Success
+VPC3 -> VPC4 Success
+
+Different VLAN Test:
+VPC1 -> VPC3 Fail
+VPC2 -> VPC4 Fail
+
+Result:
+Access Port 기반 VLAN 분리가 정상적으로 동작함
