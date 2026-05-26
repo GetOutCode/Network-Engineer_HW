@@ -132,8 +132,8 @@ write memory
 
 | Interface | IP Address | Role |
 |---|---|---|
-| Gi0/1 | 192.168.10.1/24 | VPC1 Gateway |
 | Gi0/0 | 10.0.12.1/30 | Link to L4SW2 |
+| Gi0/1 | 192.168.10.1/24 | VPC1 Gateway |
 
 ### L4SW2 Interface Status
 
